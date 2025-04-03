@@ -23,7 +23,7 @@ df_split['Date'] = pd.to_datetime(df_split['Date'], format='%Y-%m-%d', errors='c
 df_split['Price'] = pd.to_numeric(df_split['Price'], errors='coerce')
 
 #Merge df_split back to original df, excluding the flight details column 
-df_stage = pd.concat([df_split, df.drop(columns=['Flight Details'])],  axis=1) #concat([df1, df2], axis=1) joins two dfs side by side. axis=1 unions
+df_stage = pd.concat([df_split, df.drop(columns=['Flight Details'])],  axis=1) #concat([df1, df2], axis=1) joins two dfs side by side. axis=0 unions
 
 #Replace flow card values of 1/0 to Yes/No
 df_stage['Flow Card?'] = df_stage['Flow Card?'].replace({1: 'Yes', 0: 'No'})
